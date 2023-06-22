@@ -1,14 +1,14 @@
+pandas==2.0.1
+matplotlib==3.7.1
 transformers
 transformers[sentencepiece]
 datasets
 sacrebleu 
 rouge_score 
 py7zr
-pandas
 nltk
 tqdm
 PyYAML
-matplotlib
 torch
 notebook
 boto3
