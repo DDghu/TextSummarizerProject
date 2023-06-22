@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import logging # cause I want to log all the info during runtime
 
+
+logging.basicConfig(level=logging.INFO,format='[%(asctime)s]: %(message)s:')
 # have to create a logging string
 # level: The root logger will be set to the specified severity level.
 # filename: This specifies the file.
@@ -29,7 +31,7 @@ project_name="textSummarizer"
 list_of_files = [
     ".github/workflows/.gitkeep",
     f"src/{project_name}/__init__.py",
-    f"src/{project_name}/conponents/__init__.py",
+    f"src/{project_name}/components/__init__.py",
     f"src/{project_name}/utils/__init__.py",
     f"src/{project_name}/utils/common.py", # inside this common I will write all the utility
     f"src/{project_name}/logging/__init__.py",
@@ -38,7 +40,7 @@ list_of_files = [
     f"src/{project_name}/pipeline/__init__.py", #It will contain training and prediction pipeline 
     f"src/{project_name}/entity/__init__.py",
     f"src/{project_name}/constants/__init__.py",
-    "config/config.yaml", #YAML is humn friendly data serialization language and it can be read by PyYAML module
+    "config/config.yaml", #YAML is human friendly data serialization language and it can be read by PyYAML module
     "params.yaml",
     "app.py",
     "main.py",
@@ -53,12 +55,13 @@ for filepath in list_of_files:
 # first of all we required to convert the path to the operating system format otherwise it throws error cause for linux we use forward slash and for windows we use back slash
 # so for this we use path() libray
     filepath=Path(filepath)
-# after that in gitbash from copy
+# after that in gitbash from copy 
     filedir,filename=os.path.split(filepath) #it splits and returns my filedirectory and filename
 # after that in gitbash from copy
     if filedir!="": # ⭐⭐.i.e. if folder is not present
         os.makedirs(filedir,exist_ok=True)
         logging.info(f"Creating directory :{filedir} for the file {filename}")
+        
     if (not os.path.exists(filepath)) or (os.path.getsize(filepath)==0):
         with open(filepath,'w') as f:
             pass
